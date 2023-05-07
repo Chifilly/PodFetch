@@ -9,7 +9,6 @@ RUN  npm install && npm run build
 
 FROM snowgoons/rustbuilder:rustc-1.65.0 as dependency-cache
 
-RUN apk add pkgconfig openssl-dev libc-dev git curl
 
 USER root
 
@@ -24,8 +23,6 @@ RUN RUSTFLAGS='-C target-feature=-crt-static' cargo build --release
 
 
 FROM snowgoons/rustbuilder:rustc-1.65.0 as builder
-
-RUN apk add pkgconfig openssl-dev libc-dev git curl
 
 USER root
 
